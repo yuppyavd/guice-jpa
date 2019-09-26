@@ -19,23 +19,18 @@ package com.github.sclassen.guicejpa;
 import javax.persistence.EntityManager;
 
 /**
- * The Unit of work correlates with the life cycle of the {@link EntityManager}.
+ * <p>The Unit of work correlates with the life cycle of the {@link EntityManager}.
  * According to JPA every thread should use its own {@link EntityManager}. Therefore the unit of
  * work will control the life cycle of the {@link EntityManager} on a per thread basis. This means
- * the UnitOfWork is thread safe.
- * <p/>
- * Most of the time it is not recommended to manual control the unit of work.
- * <p/>
- * For applications running in a container the {@link PersistenceFilter} is recommended.
- * It will start a unit of work for every incoming request and properly close it at the end.
- * <p/>
- * For stand alone application it is recommended to relay on the @{@link Transactional} annotation.
- * The transaction handler will automatically span a unit of work around a transaction.
- * <p/>
- * The most likely scenario in which one would want to take manual control over the unit of work
- * is in a background thread within a container (i.e. timer triggered jobs).
- * <p/>
- * Recommended pattern:
+ * the UnitOfWork is thread safe.</p>
+ * <p>Most of the time it is not recommended to manual control the unit of work.</p>
+ * <p>For applications running in a container the {@link PersistenceFilter} is recommended.
+ * It will start a unit of work for every incoming request and properly close it at the end.</p>
+ * <p>For stand alone application it is recommended to relay on the @{@link Transactional} annotation.
+ * The transaction handler will automatically span a unit of work around a transaction.</p>
+ * <p>The most likely scenario in which one would want to take manual control over the unit of work
+ * is in a background thread within a container (i.e. timer triggered jobs).</p>
+ * <p>Recommended pattern:</p>
  * <pre>
  * public void someMethod() {
  *   final boolean unitOfWorkWasInactive = ! unitOfWork.isActive();

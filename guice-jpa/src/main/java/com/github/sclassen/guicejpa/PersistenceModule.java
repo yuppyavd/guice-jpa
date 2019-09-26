@@ -37,10 +37,9 @@ import com.google.inject.matcher.Matcher;
 import com.google.inject.matcher.Matchers;
 
 /**
- * Main module of the jpa-persistence guice extension.
- * <p/>
- * Add either a {@link ApplicationManagedPersistenceUnitModule} or a
- * {@link ContainerManagedPersistenceUnitModule} per persistence unit using the methods
+ * <p>Main module of the jpa-persistence guice extension.</p>
+ * <p>Add either a {@link ApplicationManagedPersistenceUnitModule} or a
+ * {@link ContainerManagedPersistenceUnitModule} per persistence unit using the methods</p>
  * <ul>
  *    <li>{@link #add(ApplicationManagedPersistenceUnitModule)}</li>
  *    <li>{@link #addApplicationManagedPersistenceUnit(String)}</li>
@@ -49,10 +48,9 @@ import com.google.inject.matcher.Matchers;
  *    <li>{@link #addContainerManagedPersistenceUnit(String)}</li>
  *    <li>{@link #addContainerManagedPersistenceUnit(String, Properties)}</li>
  * </ul>
- * <p/>
- * If container managed persistence units have been added and JTA transactions are supported.
+ * <p>If container managed persistence units have been added and JTA transactions are supported.
  * Use {@link #setUserTransactionJndiName(String)} to define the JNDI name of the
- * {@link UserTransaction} provided by the container.
+ * {@link UserTransaction} provided by the container.</p>
  *
  * @author Stephan Classen
  */

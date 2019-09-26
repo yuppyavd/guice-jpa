@@ -19,7 +19,7 @@ package com.github.sclassen.guicejpa;
 /**
  * This is the main control to the entire persistence engine. Before calling any other method
  * of either {@link UnitOfWork}, {@link EntityManagerProvider}, or any method annotated with
- * @{@link Transactional} the persistence service must be started.
+ * {@link Transactional} the persistence service must be started.
  *
  * @author Stephan Classen
  */

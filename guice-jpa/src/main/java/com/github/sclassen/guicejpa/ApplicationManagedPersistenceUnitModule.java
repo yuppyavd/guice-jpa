@@ -23,22 +23,19 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 
 /**
- * Persistence module for an application managed persistence unit.
- * <p/>
- * Use the {@link PersistenceUnitBuilder} to configure an instance of this class.
- * <p/>
- * This is a guice private module which will expose the following bindings:
+ * <p>Persistence module for an application managed persistence unit.</p>
+ * <p>Use the {@link PersistenceUnitBuilder} to configure an instance of this class.</p>
+ * <p>This is a guice private module which will expose the following bindings:</p>
  * <ul>
  *    <li>{@link UnitOfWork}</li>
  *    <li>{@link EntityManagerProvider}</li>
  *    <li>{@link PersistenceService}</li>
  * </ul>
- * If an annotation has been defined for this module the above classes are exposed with this
- * annotation. Within the private module the above classes are also binded without any annotation.
- * <p/>
- * You can extend this class and override {@link #configurePersistence()} to bind and expose
+ * <p>If an annotation has been defined for this module the above classes are exposed with this
+ * annotation. Within the private module the above classes are also binded without any annotation.</p>
+ * <p>You can extend this class and override {@link #configurePersistence()} to bind and expose
  * additional classes within this private module. This is useful if you require injection of the
- * above classes without annotation.
+ * above classes without annotation.</p>
  *
  * @author Stephan Classen
  */

@@ -139,6 +139,7 @@ abstract class AbstractPersistenceUnitModule extends PrivateModule {
    * exposes it at the same time.
    *
    * @param type the type to bind and expose.
+   * @param <T> the type literal
    * @return the bindingBuilder to define what to bind the given type to.
    */
   protected final <T> LinkedBindingBuilder<T> bindAndExpose(TypeLiteral<T> type) {
@@ -157,6 +158,7 @@ abstract class AbstractPersistenceUnitModule extends PrivateModule {
    * it at the same time.
    *
    * @param type the type to bind and expose.
+   * @param <T> the type class
    * @return the bindingBuilder to define what to bind the given type to.
    */
   protected final <T> LinkedBindingBuilder<T> bindAndExpose(Class<T> type) {

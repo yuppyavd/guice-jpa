@@ -28,10 +28,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * Filter for use in container.
+ * <p>Filter for use in container.
  * The filter will start all persistence services upon container start and span a unit of work
- * around every request which is filtered.
- * <p/>
+ * around every request which is filtered.</p>
  * Usage example:
  * <pre>
  *  public class MyModule extends ServletModule {

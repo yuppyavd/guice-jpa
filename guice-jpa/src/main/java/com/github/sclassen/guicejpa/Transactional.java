@@ -28,15 +28,13 @@ import com.google.inject.Key;
 import com.google.inject.Provider;
 
 /**
- * Marks a method or class to be executed within a transaction.
- * <p/>
- * This will span a new transaction around the method unless there is already a running transaction.
+ * <p>Marks a method or class to be executed within a transaction.</p>
+ * <p>This will span a new transaction around the method unless there is already a running transaction.
  * In the case that there is a running transaction no new transaction is started.
  * If a rollback happens for a method which did not start the transaction the already existing
- * transaction will be marked as rollbackOnly.
- * <p/>
- * Guice uses AOP to enhance a method annotated with @{@link Transactional} with a wrapper.
- * This means the @{@link Transactional} only works as expected when:
+ * transaction will be marked as rollbackOnly.</p>
+ * <p>Guice uses AOP to enhance a method annotated with @{@link Transactional} with a wrapper.
+ * This means the @{@link Transactional} only works as expected when:</p>
  * <ul>
  *    <li>
  *        The object on which the method is called has been created by guice.
@@ -56,17 +54,20 @@ public @interface Transactional {
   /**
    * A List of annotations for persistence units on which to start a transaction.
    * Default is on all persistence units.
+   * @return the units list
    */
   Class<? extends Annotation>[] onUnits() default {};
 
   /**
    * A list of exceptions to rollback on. Default is {@link RuntimeException}.
+   * @return the exceptions list
    */
   Class<? extends Exception>[] rollbackOn() default RuntimeException.class;
 
   /**
-   * A list of exceptions to <b>not<b> rollback on. Use this to exclude one ore more subclasses of
+   * A list of exceptions to <b>not</b> rollback on. Use this to exclude one ore more subclasses of
    * the exceptions defined in rollbackOn(). Default is none.
+   * @return the exceptions list
    */
   Class<? extends Exception>[] ignore() default {};
 }
