@@ -21,6 +21,7 @@ import java.util.List;
 
 import com.github.sclassen.guicejpa.EntityManagerProvider;
 import com.github.sclassen.guicejpa.testframework.exceptions.RuntimeTestException;
+import com.github.sclassen.guicejpa.testframework.exceptions.TestError;
 import com.github.sclassen.guicejpa.testframework.exceptions.TestException;
 
 import com.google.common.annotations.VisibleForTesting;
@@ -51,7 +52,7 @@ public abstract class TransactionalTask {
    * @throws TestException may be thrown to test rollback.
    * @throws RuntimeTestException may be thrown to test rollback.
    */
-  public abstract void doTransactional() throws TestException, RuntimeTestException;
+  public abstract void doTransactional() throws TestException, RuntimeTestException, TestError;
 
   /**
    * Does other tasks.

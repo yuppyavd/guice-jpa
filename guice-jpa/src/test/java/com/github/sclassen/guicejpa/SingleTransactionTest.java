@@ -16,14 +16,13 @@
  */
 package com.github.sclassen.guicejpa;
 
-import junit.framework.TestCase;
-
 import com.github.sclassen.guicejpa.testframework.TransactionalWorker;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnAnyThrowingNone;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnAnyThrowingRuntimeTestException;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnAnyThrowingTestException;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnNoneThrowingNone;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnNoneThrowingRuntimeTestException;
+import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnNoneThrowingTestError;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnNoneThrowingTestException;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnRuntimeTestExceptionThrowingNone;
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnRuntimeTestExceptionThrowingRuntimeTestException;
@@ -33,6 +32,8 @@ import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnTestExc
 import com.github.sclassen.guicejpa.testframework.tasks.TaskRollingBackOnTestExceptionThrowingTestException;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+
+import junit.framework.TestCase;
 
 /**
  * Tests running a single non nested transaction.
@@ -197,6 +198,18 @@ public class SingleTransactionTest extends TestCase {
     // given
     final TransactionalWorker worker = injector.getInstance(TransactionalWorker.class);
     worker.scheduleTask(TaskRollingBackOnTestExceptionThrowingTestException.class);
+
+    // when
+    worker.doTasks();
+
+    // then
+    worker.assertNoEntityHasBeenPersisted();
+  }
+
+  public void testTaskRollingBackOnNoneThrowingTestError() {
+    // given
+    final TransactionalWorker worker = injector.getInstance(TransactionalWorker.class);
+    worker.scheduleTask(TaskRollingBackOnNoneThrowingTestError.class);
 
     // when
     worker.doTasks();

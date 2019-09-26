@@ -29,6 +29,7 @@ import com.github.sclassen.guicejpa.EntityManagerProvider;
 import com.github.sclassen.guicejpa.Transactional;
 import com.github.sclassen.guicejpa.UnitOfWork;
 import com.github.sclassen.guicejpa.testframework.exceptions.RuntimeTestException;
+import com.github.sclassen.guicejpa.testframework.exceptions.TestError;
 import com.github.sclassen.guicejpa.testframework.exceptions.TestException;
 
 import com.google.common.annotations.VisibleForTesting;
@@ -98,6 +99,9 @@ public class TransactionalWorker {
       // do nothing
     }
     catch (RuntimeTestException e) {
+      // do nothing
+    }
+    catch (TestError e) {
       // do nothing
     }
 

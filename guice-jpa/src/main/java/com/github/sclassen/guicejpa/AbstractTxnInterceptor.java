@@ -230,6 +230,10 @@ abstract class AbstractTxnInterceptor implements MethodInterceptor {
    * @return {@code true} if a rollback is necessary, {@code false} otherwise.
    */
   private boolean rollbackIsNecessary(Transactional transactional, Throwable e) {
+    if (e instanceof Error) {
+      return true;
+    }
+    
     for (Class<? extends Exception> rollbackOn : transactional.rollbackOn()) {
       if (rollbackOn.isInstance(e)) {
         for (Class<? extends Exception> ignore : transactional.ignore()) {
